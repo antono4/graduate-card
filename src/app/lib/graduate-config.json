@@ -1,0 +1,34 @@
+
+{
+  "graduate": {
+    "fullName": "Jimmy Randa Putra",
+    "nickname": "Jimmy",
+    "degree": "S.Kom.",
+    "major": "Teknik Informatika",
+    "university": "Universitas Putra Indonesia YPTK Padang",
+    "quote": "Sudah resmi lulus. Sekarang tugas terberat saya adalah meyakinkan semua orang kalau foto di ijazah itu memang benar-benar saya.",
+    "socials": {
+      "facebook": "#",
+      "instagram": "https://instagram.com/bae_saturn_",
+      "linkedin": "https://www.linkedin.com/in/jimmyranda-/",
+      "whatsapp": "6281276484493"
+    }
+  },
+  "event": {
+    "date": "2026-05-19T09:00:00",
+    "locationName": "Gedung UPI Convention Center",
+    "address": "Jl. Raya Lubuk Begalung, Padang, Sumatera Barat",
+    "mapLink": "https://maps.app.goo.gl/RP5yk6gzz2YxDdop6",
+    "rsvpDeadline": "17 Mei 2026"
+  },
+  "ui": {
+    "giftSection": {
+      "title": "SYARAT & KETENTUAN",
+      "quote": "Gak usah kado. Tangan saya cuma dua: satu buat ijazah, satu lagi sibuk benerin kuncir toga yang hobi miring sendiri!",
+      "footer": "DILARANG MEREM PAS SESI CEKREK DIMULAI!"
+    },
+    "footer": {
+      "thanksMessage": "TERIMA KASIH ATAS DOANYA"
+    }
+  }
+}

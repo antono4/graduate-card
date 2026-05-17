@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Soft Neo-Brutalist Palette - Refined & Premium */
+    --background: 0 0% 98%;
+    --foreground: 240 10% 3.9%;
+    
+    --primary: 45 93% 47%; /* Deep Gold-Yellow */
+    --primary-foreground: 0 0% 0%;
+    
+    --accent: 330 81% 60%; /* Vibrant Pink */
+    --accent-foreground: 0 0% 100%;
+    
+    --secondary: 187 100% 42%; /* Soft Teal */
+    --secondary-foreground: 0 0% 0%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 240 5.9% 10%;
+    --input: 240 5.9% 10%;
+    --ring: 240 5.9% 10%;
+    
+    --radius: 12px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased selection:bg-primary selection:text-black;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline font-black uppercase tracking-tight;
+  }
+}
+
+@layer components {
+  .soft-brutalist-border {
+    @apply border-[3px] border-black;
+  }
+
+  .soft-brutalist-shadow {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+    @apply transition-all duration-200;
+  }
+
+  .soft-brutalist-shadow-lg {
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+  }
+
+  .soft-brutalist-interactive {
+    @apply active:translate-x-[2px] active:translate-y-[2px] active:shadow-none hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)];
+  }
+
+  .soft-brutalist-card {
+    @apply bg-white soft-brutalist-border soft-brutalist-shadow rounded-[var(--radius)] p-6;
+  }
+
+  .soft-brutalist-input {
+    @apply soft-brutalist-border rounded-[var(--radius)] bg-white px-4 py-3 font-bold focus:bg-primary/5 outline-none w-full transition-colors;
+  }
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.1) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.floating-element {
+  @apply pointer-events-none absolute z-0 select-none opacity-20;
+}

@@ -1,0 +1,48 @@
+
+{
+  "version": "1.0.8",
+  "placeholderImages": [
+    {
+      "id": "graduate-portrait",
+      "description": "Foto profil wisuda Jimmy",
+      "imageUrl": "/images/portrait.png",
+      "imageHint": "graduate portrait"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Memori masa kuliah 1",
+      "imageUrl": "/images/gallery-1.png",
+      "imageHint": "university library"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Memori masa kuliah 2",
+      "imageUrl": "/images/gallery-2.png",
+      "imageHint": "campus friends"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Memori masa kuliah 3",
+      "imageUrl": "/images/gallery-3.png",
+      "imageHint": "university architecture"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Memori masa kuliah 4",
+      "imageUrl": "/images/gallery-4.png",
+      "imageHint": "graduation caps"
+    },
+    {
+      "id": "university-campus",
+      "description": "Kampus UPI YPTK",
+      "imageUrl": "/images/campus.png",
+      "imageHint": "university campus"
+    },
+    {
+      "id": "og-image",
+      "description": "Thumbnail untuk sharing media sosial",
+      "imageUrl": "/images/og-image.png",
+      "imageHint": "social preview"
+    }
+  ]
+}

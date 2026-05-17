@@ -9,17 +9,14 @@ export type ImagePlaceholder = {
 };
 
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
-const version = data.version || '1.0.0';
 
 /**
- * Mendapatkan URL gambar berdasarkan ID dengan penambahan cache-busting versioning.
- * Jika Anda mengganti file gambar di folder public, cukup naikkan angka "version" di placeholder-images.json
+ * Mendapatkan URL gambar berdasarkan ID tanpa versioning tambahan.
+ * Path statis memungkinkan browser melakukan caching dengan lebih baik.
  */
 export function getImageUrlById(id: string): string {
   const image = PlaceHolderImages.find(img => img.id === id);
-  const baseUrl = image ? image.imageUrl : `https://picsum.photos/seed/${id}/800/1000`;
-  // Menambahkan parameter versi untuk menghindari cache browser yang membandel
-  return `${baseUrl}?v=${version}`;
+  return image ? image.imageUrl : `https://picsum.photos/seed/${id}/800/1000`;
 }
 
 export function getImageHintById(id: string): string {

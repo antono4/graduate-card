@@ -26,33 +26,29 @@ const Sticker = ({ icon: Icon, color = "bg-primary", position = "top-left" }: { 
 };
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false);
   const [isGraduated, setIsGraduated] = useState(false);
+  const [formattedDate, setFormattedDate] = useState("");
   const { toast } = useToast();
   const { graduate, event } = GraduateData as any;
   
   const portraitUrl = getImageUrlById('graduate-portrait');
   const portraitHint = getImageHintById('graduate-portrait');
+  const formattedTime = "12:30 WIB";
   
   useEffect(() => {
-    setMounted(true);
-    
     const targetDate = new Date(event.date);
     const checkStatus = () => {
       const now = new Date();
       setIsGraduated(now >= targetDate);
     };
 
+    // Format date on client to avoid hydration mismatch
+    setFormattedDate(targetDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }));
+
     checkStatus();
     const timer = setInterval(checkStatus, 1000);
     return () => clearInterval(timer);
   }, [event.date]);
-
-  if (!mounted) return null;
-
-  const eventDate = new Date(event.date);
-  const formattedDate = eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-  const formattedTime = eventDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).replace('.', ':') + " WIB";
 
   const addToCalendar = () => {
     const dateStr = event.date.replace(/-|:|\.\d\d\d/g, "");
@@ -68,7 +64,7 @@ export function Hero() {
     if (navigator.share) {
       navigator.share({
         title: `Undangan Wisuda ${graduate.fullName}`,
-        text: `Mari merayakan momen wisuda ${graduate.fullName} pada ${formattedDate} pukul 12.30 WIB!`,
+        text: `Mari merayakan momen wisuda ${graduate.fullName} pada ${formattedDate || '19 Mei 2026'} pukul 12.30 WIB!`,
         url: window.location.href,
       }).catch(() => {
         toast({ title: "Gagal membagikan", description: "Coba salin link secara manual." });
@@ -101,6 +97,7 @@ export function Hero() {
                 src={portraitUrl} 
                 alt={graduate.fullName} 
                 fill 
+                sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
                 priority
                 data-ai-hint={portraitHint}
@@ -179,7 +176,7 @@ export function Hero() {
                     </div>
                     <div>
                       <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">Hari & Tanggal</p>
-                      <p className="text-sm sm:text-base font-black leading-none text-black mt-1">{formattedDate}</p>
+                      <p className="text-sm sm:text-base font-black leading-none text-black mt-1">{formattedDate || '19 Mei 2026'}</p>
                     </div>
                   </div>
                   

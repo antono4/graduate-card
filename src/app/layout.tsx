@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Mari rayakan momen bersejarah wisuda Jimmy Randa Putra, S.Kom. dari Teknik Informatika UPI YPTK Padang pada 19 Mei 2026. Kehadiran Anda adalah kehormatan bagi kami.',
   keywords: ['Undangan Wisuda', 'Jimmy Randa Putra', 'S.Kom', 'Teknik Informatika', 'UPI YPTK Padang', 'Graduation Invitation', 'Padang', 'Sumatera Barat'],
   authors: [{ name: 'Jimmy Randa Putra' }],
-  metadataBase: new URL('https://undangan-wisuda-jimmy.vercel.app'), // Pastikan ini URL produksi Anda
+  metadataBase: new URL('https://undangan-wisuda-jimmy.vercel.app'),
   openGraph: {
     title: 'Undangan Wisuda Jimmy Randa Putra, S.Kom. Official',
     description: 'Rayakan kelulusan Jimmy pada 19 Mei 2026 di UPI Convention Center Padang. Cek detail undangannya di sini!',

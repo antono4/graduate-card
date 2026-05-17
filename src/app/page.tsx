@@ -23,16 +23,28 @@ import {
   Check,
   Heart,
   Copy,
-  Lock
+  Lock,
+  Sparkles,
+  Crown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 
-const SectionPin = ({ color = "bg-primary" }: { color?: string }) => (
-  <div className={`absolute -top-3 -left-3 w-6 h-6 sm:w-8 sm:h-8 ${color} soft-brutalist-border rounded-full soft-brutalist-shadow z-30 flex items-center justify-center`}>
-    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full opacity-50" />
-  </div>
-);
+// Komponen Sticker baru yang lebih aman dan estetik
+const Sticker = ({ icon: Icon, color = "bg-primary", position = "top-left" }: { icon: any, color?: string, position?: "top-left" | "top-right" | "bottom-left" | "bottom-right" }) => {
+  const posClasses = {
+    "top-left": "-top-4 -left-4 rotate-[-12deg]",
+    "top-right": "-top-4 -right-4 rotate-[12deg]",
+    "bottom-left": "-bottom-4 -left-4 rotate-[15deg]",
+    "bottom-right": "-bottom-4 -right-4 rotate-[-15deg]"
+  };
+
+  return (
+    <div className={`absolute ${posClasses[position]} w-10 h-10 sm:w-12 sm:h-12 ${color} soft-brutalist-border rounded-xl soft-brutalist-shadow-lg z-40 flex items-center justify-center`}>
+      <Icon className="w-5 h-5 sm:w-6 h-6 text-black" />
+    </div>
+  );
+};
 
 const Marquee = ({ isGraduated }: { isGraduated: boolean }) => {
   return (
@@ -177,10 +189,8 @@ function InvitationContent() {
                 transition={{ type: "spring", damping: 15 }}
                 className="bg-white soft-brutalist-border soft-brutalist-shadow-lg p-6 sm:p-10 rounded-[32px] sm:rounded-[40px] relative"
               >
-                <SectionPin color="bg-accent" />
-                <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-secondary soft-brutalist-border rounded-lg soft-brutalist-shadow z-20 flex items-center justify-center rotate-12">
-                  <Star className="w-4 h-4 text-black fill-black" />
-                </div>
+                <Sticker icon={Star} color="bg-accent" position="top-left" />
+                <Sticker icon={Sparkles} color="bg-secondary" position="bottom-right" />
 
                 <div className="w-14 h-14 sm:w-20 sm:h-20 bg-primary soft-brutalist-border rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 soft-brutalist-shadow animate-bounce">
                   < GraduationCap className="w-7 h-7 sm:w-10 sm:h-10 text-black" />
@@ -283,9 +293,9 @@ function InvitationContent() {
                       viewport={{ once: true }}
                       exit={{ opacity: 0, scale: 0.9 }}
                     >
-                      <div className="relative inline-block mb-8 sm:mb-10">
-                        <SectionPin color="bg-white" />
-                        <h3 className="text-3xl sm:text-5xl font-headline font-black uppercase tracking-tighter text-black px-6 py-2 bg-white/20 rounded-2xl soft-brutalist-border">
+                      <div className="relative inline-block mb-12 sm:mb-16">
+                        <Sticker icon={Zap} color="bg-white" position="top-left" />
+                        <h3 className="text-3xl sm:text-5xl font-headline font-black uppercase tracking-tighter text-black px-8 py-3 bg-white/20 rounded-2xl soft-brutalist-border">
                           HITUNG <span className="text-white">MUNDUR</span>
                         </h3>
                       </div>
@@ -304,7 +314,7 @@ function InvitationContent() {
                       </h2>
 
                       <div className="max-w-xl mx-auto bg-white soft-brutalist-border soft-brutalist-shadow p-6 sm:p-8 rounded-[24px] sm:rounded-[32px] relative">
-                        <SectionPin color="bg-accent" />
+                        <Sticker icon={Crown} color="bg-accent" position="top-right" />
                         <p className="text-lg sm:text-2xl font-black uppercase tracking-tighter text-black leading-tight">
                           Selamat atas kelulusan<br/>
                           <span className="text-primary mt-1 block">{graduate.fullName}, {graduate.degree}</span>
@@ -316,18 +326,16 @@ function InvitationContent() {
               </div>
             </section>
 
-            <section className="py-16 sm:py-28 px-4 bg-white overflow-hidden relative">
+            <section className="py-20 sm:py-32 px-4 bg-white overflow-visible relative">
               <div className="max-w-4xl mx-auto relative z-10">
                 <motion.div 
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="bg-white soft-brutalist-border soft-brutalist-shadow-lg p-6 sm:p-14 relative rounded-[32px] sm:rounded-[40px]"
+                  className="bg-white soft-brutalist-border soft-brutalist-shadow-lg p-8 sm:p-14 relative rounded-[32px] sm:rounded-[40px]"
                 >
-                  <SectionPin color="bg-primary" />
-                  <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-accent soft-brutalist-border rounded-full flex items-center justify-center soft-brutalist-shadow rotate-12">
-                    <Flame className="w-6 h-6 text-white fill-white" />
-                  </div>
+                  <Sticker icon={Flame} color="bg-primary" position="top-left" />
+                  <Sticker icon={Sparkles} color="bg-accent" position="bottom-right" />
                   
                   <AnimatePresence mode="wait">
                     <motion.p 
@@ -356,14 +364,15 @@ function InvitationContent() {
 
             <WishesHub />
 
-            <section className="py-16 sm:py-24 px-4 bg-white border-t-[3px] border-black relative overflow-hidden">
+            <section className="py-20 sm:py-32 px-4 bg-white border-t-[3px] border-black relative overflow-visible">
                <div className="max-w-4xl mx-auto relative z-10">
                  <motion.div
                    initial={{ opacity: 0, scale: 0.95 }}
                    whileInView={{ opacity: 1, scale: 1 }}
                    viewport={{ once: true }}
-                   className="bg-white soft-brutalist-border soft-brutalist-shadow-lg p-6 sm:p-12 rounded-[40px] relative overflow-visible"
+                   className="bg-white soft-brutalist-border soft-brutalist-shadow-lg p-8 sm:p-16 rounded-[40px] relative"
                  >
+                    <Sticker icon={Check} color="bg-primary" position="top-left" />
                     <div className="flex flex-col gap-6 relative z-10">
                       <div className="flex items-center gap-4 sm:gap-6 mb-2">
                         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-accent soft-brutalist-border rounded-full flex items-center justify-center shrink-0 soft-brutalist-shadow">
@@ -405,16 +414,16 @@ function InvitationContent() {
                </div>
             </section>
 
-            <section id="lokasi" className="py-20 sm:py-32 px-4 bg-white border-t-[3px] border-black relative overflow-hidden">
+            <section id="lokasi" className="py-20 sm:py-32 px-4 bg-white border-t-[3px] border-black relative overflow-visible">
               <div className="max-w-3xl mx-auto relative z-10">
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="bg-white soft-brutalist-border soft-brutalist-shadow-lg rounded-[32px] sm:rounded-[48px] overflow-visible"
+                  className="bg-white soft-brutalist-border soft-brutalist-shadow-lg rounded-[32px] sm:rounded-[48px] relative"
                 >
-                  <div className="p-8 sm:p-16 text-center relative">
-                    <SectionPin color="bg-secondary" />
+                  <Sticker icon={MapPin} color="bg-secondary" position="top-left" />
+                  <div className="p-10 sm:p-20 text-center relative">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-secondary soft-brutalist-border rounded-full flex items-center justify-center mx-auto mb-6 sm:mb-8 soft-brutalist-shadow">
                       <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-black" />
                     </div>
@@ -453,7 +462,7 @@ function InvitationContent() {
               </div>
             </section>
 
-            <footer className="py-16 sm:py-32 px-4 border-t-[3px] border-black bg-white overflow-hidden relative">
+            <footer className="py-20 sm:py-32 px-4 border-t-[3px] border-black bg-white overflow-hidden relative">
               <div className="max-w-6xl mx-auto text-center relative z-10">
                 <div className="mb-8 sm:mb-12">
                   <div className="inline-flex items-center gap-2 bg-black text-white px-5 sm:px-6 py-2 rounded-full soft-brutalist-border soft-brutalist-shadow">

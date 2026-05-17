@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
@@ -6,20 +7,30 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getImageUrlById, getImageHintById } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { GraduateData } from '@/app/lib/graduate-data';
-import { Calendar, Clock, MapPin, CalendarPlus, Share2, Navigation, Sparkles, EyeOff, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, MapPin, CalendarPlus, Share2, Navigation, Sparkles, EyeOff, CheckCircle2, Zap, Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-const SectionPin = ({ color = "bg-primary" }: { color?: string }) => (
-  <div className={`absolute -top-3 -left-3 w-6 h-6 sm:w-8 sm:h-8 ${color} soft-brutalist-border rounded-full soft-brutalist-shadow z-30 flex items-center justify-center`}>
-    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full opacity-50" />
-  </div>
-);
+// Komponen Sticker untuk Hero
+const Sticker = ({ icon: Icon, color = "bg-primary", position = "top-left" }: { icon: any, color?: string, position?: "top-left" | "top-right" | "bottom-left" | "bottom-right" }) => {
+  const posClasses = {
+    "top-left": "-top-4 -left-4 rotate-[-12deg]",
+    "top-right": "-top-4 -right-4 rotate-[12deg]",
+    "bottom-left": "-bottom-4 -left-4 rotate-[15deg]",
+    "bottom-right": "-bottom-4 -right-4 rotate-[-15deg]"
+  };
+
+  return (
+    <div className={`absolute ${posClasses[position]} w-10 h-10 sm:w-12 sm:h-12 ${color} soft-brutalist-border rounded-xl soft-brutalist-shadow-lg z-40 flex items-center justify-center`}>
+      <Icon className="w-5 h-5 sm:w-6 h-6 text-black" />
+    </div>
+  );
+};
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
   const [isGraduated, setIsGraduated] = useState(false);
   const { toast } = useToast();
-  const { graduate, event } = GraduateData;
+  const { graduate, event } = GraduateData as any;
   
   const portraitUrl = getImageUrlById('graduate-portrait');
   const portraitHint = getImageHintById('graduate-portrait');
@@ -74,7 +85,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative flex items-center justify-center py-8 sm:py-16 px-4 bg-background overflow-hidden min-h-[80vh] lg:min-h-[85vh]">
+    <section className="relative flex items-center justify-center py-12 sm:py-20 px-4 bg-background overflow-visible min-h-[80vh] lg:min-h-[85vh]">
       <div className="absolute inset-0 bg-dot-pattern pointer-events-none opacity-20" />
       
       <div className="w-full max-w-6xl mx-auto relative z-10">
@@ -84,9 +95,9 @@ export function Hero() {
           transition={{ duration: 0.8 }}
           className="soft-brutalist-border soft-brutalist-shadow-lg bg-white rounded-[32px] sm:rounded-[40px] overflow-visible relative"
         >
-          <SectionPin color="bg-accent" />
+          <Sticker icon={Star} color="bg-accent" position="top-left" />
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-visible relative">
             {/* Image Side */}
             <div className="lg:col-span-5 relative h-[500px] sm:h-[550px] lg:h-auto border-b-[3px] lg:border-b-0 lg:border-r-[3px] border-black overflow-hidden group rounded-t-[29px] lg:rounded-l-[37px] lg:rounded-tr-none">
               <Image 
@@ -141,8 +152,8 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Content Side */}
-            <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-white relative">
+            {/* Content Side - Fixed Radius Bug */}
+            <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-white relative rounded-b-[29px] lg:rounded-r-[37px] lg:rounded-bl-none">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="inline-block bg-secondary/20 text-secondary-foreground px-4 py-1.5 soft-brutalist-border font-black text-[9px] uppercase rounded-full tracking-widest relative">
@@ -168,7 +179,7 @@ export function Hero() {
                   <div className="flex items-center gap-4 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary soft-brutalist-border rounded-xl flex items-center justify-center shrink-0 group-hover:rotate-3 transition-transform soft-brutalist-shadow relative">
                       <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border border-black" />
-                      <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <Calendar className="w-5 h-5 sm:w-6 h-6" />
                     </div>
                     <div>
                       <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">
@@ -181,7 +192,7 @@ export function Hero() {
                   <div className="flex items-center gap-4 group">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary soft-brutalist-border rounded-xl flex items-center justify-center shrink-0 group-hover:-rotate-3 transition-transform soft-brutalist-shadow relative">
                       <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border border-black" />
-                      <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <Clock className="w-5 h-5 sm:w-6 h-6" />
                     </div>
                     <div>
                       <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">
@@ -194,7 +205,7 @@ export function Hero() {
                   <div className="flex items-center gap-4 group sm:col-span-2">
                     <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent soft-brutalist-border rounded-xl flex items-center justify-center shrink-0 group-hover:rotate-3 transition-transform text-white soft-brutalist-shadow relative">
                       <div className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full border border-black" />
-                      <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <MapPin className="w-5 h-5 sm:w-6 h-6" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">Lokasi Acara</p>

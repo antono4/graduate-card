@@ -5,8 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: 'Undangan Wisuda Jimmy Randa Putra, S.Kom. | UPI YPTK Padang',
-  description: 'Mari rayakan momen bersejarah wisuda Jimmy Randa Putra, S.Kom. dari Teknik Informatika UPI YPTK Padang pada 19 Mei 2026. Kehadiran Anda adalah kehormatan bagi kami.',
-  keywords: ['Undangan Wisuda', 'Jimmy Randa Putra', 'S.Kom', 'Teknik Informatika', 'UPI YPTK Padang', 'Graduation Invitation', 'Padang', 'Sumatera Barat'],
+  description: 'Mari rayakan momen bersejarah wisuda Jimmy Randa Putra, S.Kom. dari Teknik Informatika UPI YPTK Padang pada 19 Mei 2026 pukul 12.30 WIB.',
+  keywords: ['Undangan Wisuda', 'Jimmy Randa Putra', 'S.Kom', 'Teknik Informatika', 'UPI YPTK Padang', 'Graduation Invitation', 'Padang'],
   authors: [{ name: 'Jimmy Randa Putra' }],
   metadataBase: new URL('https://undangan-wisuda-jimmy.vercel.app'),
   icons: {
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Undangan Wisuda Jimmy Randa Putra, S.Kom. Official',
-    description: 'Rayakan kelulusan Jimmy pada 19 Mei 2026 di UPI Convention Center Padang. Cek detail undangannya di sini!',
+    description: 'Rayakan kelulusan Jimmy pada 19 Mei 2026 pukul 12.30 WIB di UPI Convention Center Padang. Lihat detailnya di sini!',
     url: 'https://undangan-wisuda-jimmy.vercel.app',
     siteName: 'Undangan Wisuda Jimmy',
     images: [
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Undangan Wisuda Jimmy Randa Putra, S.Kom.',
-    description: 'Mari merayakan momen kelulusan Jimmy pada 19 Mei 2026.',
-    images: ['https://undangan-wisuda-jimmy.vercel.app/images/og-image.webp'],
+    description: 'Momen berharga wisuda Jimmy, 19 Mei 2026.',
+    images: ['/images/og-image.webp'],
     creator: '@jimmyranda',
   },
   robots: {

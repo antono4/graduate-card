@@ -7,10 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getImageUrlById, getImageHintById } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { GraduateData } from '@/app/lib/graduate-data';
-import { Calendar, Clock, MapPin, CalendarPlus, Share2, Navigation, Sparkles, EyeOff, CheckCircle2, Zap, Star } from 'lucide-react';
+import { Calendar, Clock, MapPin, CalendarPlus, Share2, Navigation, Sparkles, EyeOff, CheckCircle2, Star } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-// Komponen Sticker untuk Hero
 const Sticker = ({ icon: Icon, color = "bg-primary", position = "top-left" }: { icon: any, color?: string, position?: "top-left" | "top-right" | "bottom-left" | "bottom-right" }) => {
   const posClasses = {
     "top-left": "-top-4 -left-4 rotate-[-12deg]",
@@ -53,15 +52,15 @@ export function Hero() {
 
   const eventDate = new Date(event.date);
   const formattedDate = eventDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-  const formattedTime = eventDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }) + " WIB";
+  const formattedTime = eventDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' }).replace('.', ':') + " WIB";
 
   const addToCalendar = () => {
-    const start = event.date.replace(/-|:|\.\d\d\d/g, "");
-    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Wisuda+${graduate.fullName}&dates=${start}/${start}&details=Perayaan+Wisuda+${graduate.fullName}&location=${event.locationName}&sf=true&output=xml`;
+    const dateStr = event.date.replace(/-|:|\.\d\d\d/g, "");
+    const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Wisuda+${graduate.fullName}&dates=${dateStr}/${dateStr}&details=Perayaan+Wisuda+${graduate.fullName}+S.Kom.+di+UPI+YPTK+Padang&location=${event.locationName}&sf=true&output=xml`;
     window.open(url, '_blank');
     toast({
       title: "Membuka Kalender",
-      description: "Menambahkan jadwal wisuda ke Google Calendar Anda.",
+      description: "Menambahkan jadwal wisuda pukul 12:30 WIB ke kalender Anda.",
     });
   };
 
@@ -69,17 +68,16 @@ export function Hero() {
     if (navigator.share) {
       navigator.share({
         title: `Undangan Wisuda ${graduate.fullName}`,
-        text: `Mari merayakan momen wisuda ${graduate.fullName} pada ${formattedDate}!`,
+        text: `Mari merayakan momen wisuda ${graduate.fullName} pada ${formattedDate} pukul 12.30 WIB!`,
         url: window.location.href,
       }).catch(() => {
         toast({ title: "Gagal membagikan", description: "Coba salin link secara manual." });
       });
     } else {
-      const url = window.location.href;
-      navigator.clipboard.writeText(url);
+      navigator.clipboard.writeText(window.location.href);
       toast({
         title: "Link disalin!",
-        description: "Tautan undangan telah disalin ke clipboard Anda.",
+        description: "Tautan undangan telah disalin ke clipboard.",
       });
     }
   };
@@ -98,7 +96,6 @@ export function Hero() {
           <Sticker icon={Star} color="bg-accent" position="top-left" />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 overflow-visible relative">
-            {/* Image Side */}
             <div className="lg:col-span-5 relative h-[500px] sm:h-[550px] lg:h-auto border-b-[3px] lg:border-b-0 lg:border-r-[3px] border-black overflow-hidden group rounded-t-[29px] lg:rounded-l-[37px] lg:rounded-tr-none">
               <Image 
                 src={portraitUrl} 
@@ -152,7 +149,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Content Side - Fixed Radius Bug */}
             <div className="lg:col-span-7 p-6 sm:p-10 lg:p-12 flex flex-col justify-center bg-white relative rounded-b-[29px] lg:rounded-r-[37px] lg:rounded-bl-none">
               <div className="mb-6 sm:mb-8">
                 <div className="flex items-center gap-3 mb-6">
@@ -182,9 +178,7 @@ export function Hero() {
                       <Calendar className="w-5 h-5 sm:w-6 h-6" />
                     </div>
                     <div>
-                      <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">
-                        {isGraduated ? 'Momen Bersejarah' : 'Hari & Tanggal'}
-                      </p>
+                      <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">Hari & Tanggal</p>
                       <p className="text-sm sm:text-base font-black leading-none text-black mt-1">{formattedDate}</p>
                     </div>
                   </div>
@@ -195,9 +189,7 @@ export function Hero() {
                       <Clock className="w-5 h-5 sm:w-6 h-6" />
                     </div>
                     <div>
-                      <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">
-                        {isGraduated ? 'Waktu Pelaksanaan' : 'Waktu'}
-                      </p>
+                      <p className="text-[8px] sm:text-[9px] font-black uppercase opacity-40 tracking-widest">Waktu</p>
                       <p className="text-sm sm:text-base font-black leading-none text-black mt-1">{formattedTime}</p>
                     </div>
                   </div>

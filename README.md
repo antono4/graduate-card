@@ -5,47 +5,23 @@ Undangan wisuda digital premium dengan estetika **Soft Neo-Brutalism**. Dirancan
 
 ## ✨ Fitur Utama
 - **🎨 Desain Neo-Brutalist**: Tampilan unik, berani, dan modern dengan kontras tinggi namun tetap nyaman di mata (Soft Style).
-- **🤖 AI Message Refinement**: Integrasi **Genkit (Google Gemini)** untuk membantu tamu memoles pesan ucapan agar lebih elegan tanpa menghilangkan gaya khas pengirim.
-- **💬 Dinding Harapan Real-time**: Didukung oleh **Supabase** untuk mengirim dan menampilkan doa dari tamu secara instan dengan fitur avatar kustom.
+- **🖼️ Smart Thumbnail**: Pratinjau gambar otomatis saat link dibagikan di WhatsApp/Media Sosial menggunakan format **WebP** yang ringan.
+- **🤖 AI Message Refinement**: Integrasi **Genkit (Google Gemini)** untuk membantu tamu memoles pesan ucapan agar lebih elegan.
+- **💬 Dinding Harapan Real-time**: Didukung oleh **Supabase** untuk mengirim dan menampilkan doa dari tamu secara instan.
 - **⏳ Countdown Berbasis Event**: Hitung mundur otomatis menuju hari H (19 Mei 2026).
-- **📱 Responsive & Interactive**: Animasi halus menggunakan **Framer Motion** dan layout yang optimal untuk perangkat mobile.
-- **🎵 Musik Latar**: Pengalaman imersif dengan kontrol musik yang mudah digunakan.
-- **🗺️ Integrasi Lokasi**: Navigasi Google Maps langsung dari undangan.
+- **📱 Responsive & Interactive**: Animasi halus menggunakan **Framer Motion** dan hiasan "Stickers" yang estetik.
 
-## 🛠️ Tech Stack
-- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
-- **AI**: [Genkit](https://firebase.google.com/docs/genkit) + Google Gemini
-- **Database/Real-time**: [Supabase](https://supabase.com/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Components**: [ShadCN UI](https://ui.shadcn.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
+## 🚀 Cara Agar Thumbnail Muncul di WhatsApp
+Jika gambar thumbnail belum muncul saat link dibagikan, ikuti langkah wajib ini:
 
-## 🚀 Memulai (Local Setup)
-
-1. **Clone repositori:**
-   ```bash
-   git clone https://github.com/jimmyranda/undangan-wisuda-jimmy.git
-   ```
-
-2. **Install dependensi:**
-   ```bash
-   npm install
-   ```
-
-3. **Konfigurasi Environment:**
-   Buat file `.env` di root folder dan isi kredensial berikut:
-   ```env
-   GOOGLE_GENAI_API_KEY=your_key_here
-   NEXT_PUBLIC_SUPABASE_URL=your_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   ```
-
-4. **Jalankan aplikasi:**
-   ```bash
-   npm run dev
-   ```
+1. **Kompres Gambar**: Pastikan file `public/images/og-image.webp` berukuran di bawah **300KB**. Ukuran file yang terlalu besar (di atas 1MB) seringkali diblokir oleh bot WhatsApp.
+2. **Deploy ke Vercel**: Pastikan web sudah online. Thumbnail tidak akan muncul jika link berasal dari localhost.
+3. **Gunakan Debugger**: 
+   - Buka [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/).
+   - Masukkan URL website Anda.
+   - Klik tombol **Debug**.
+   - Jika data lama muncul, klik tombol **Scrape Again** beberapa kali hingga gambar baru muncul.
+4. **Update Cache WhatsApp**: WhatsApp mungkin butuh waktu untuk menghapus cache lama. Cobalah kirim link ke kontak yang belum pernah menerima link tersebut.
 
 ## 📄 Lisensi
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).

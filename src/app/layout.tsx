@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: 'Undangan Wisuda Jimmy',
     images: [
       {
-        url: '/images/gallery-1.png',
+        url: '/images/og-image.webp',
         width: 1200,
         height: 630,
         alt: 'Pratinjau Undangan Wisuda Jimmy Randa Putra, S.Kom.',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Undangan Wisuda Jimmy Randa Putra, S.Kom.',
     description: 'Mari merayakan momen kelulusan Jimmy pada 19 Mei 2026.',
-    images: ['/images/gallery-1.png'],
+    images: ['https://undangan-wisuda-jimmy.vercel.app/images/og-image.webp'],
     creator: '@jimmyranda',
   },
   robots: {

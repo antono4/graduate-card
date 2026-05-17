@@ -1,6 +1,6 @@
 
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "placeholderImages": [
     {
       "id": "graduate-portrait",
@@ -41,7 +41,7 @@
     {
       "id": "og-image",
       "description": "Thumbnail untuk sharing media sosial",
-      "imageUrl": "/images/og-image.png",
+      "imageUrl": "/images/og-image.webp",
       "imageHint": "social preview"
     }
   ]
